@@ -2,7 +2,7 @@
 
 > A weekend planner to browse activities, build a Saturday–Sunday schedule, drag to rearrange, edit details, and share as a poster.
 
-**Live demo:** _<your Vercel/Netlify URL here>_  
+**Live demo:** _<https://wknd-plnr.vercel.app>_  
 **Walkthrough video:** _<link here>_
 
 ---
@@ -10,6 +10,7 @@
 ## ✨ Features
 
 **Core**
+
 - Activity **catalog** with search + filters (Category, Vibe).
 - **Add** activities to **Saturday** or **Sunday**.
 - **Visual schedule**: clean cards with day totals.
@@ -17,6 +18,7 @@
 - **Remove** item.
 
 **Bonus / Polish**
+
 - **Drag & Drop** reordering (and cross-day move) via `@hello-pangea/dnd` with a locked clone for stable visuals.
 - **Overlap analyzer**: inline warning when times conflict (e.g., “overlaps with Hiking 08:00–10:00”).
 - **Presets**: Lazy / Adventurous / Family starter plans.
@@ -26,6 +28,7 @@
 - **Responsive** layout (mobile → desktop).
 
 **Super-stretch touches**
+
 - **Performance**: conditional list virtualization (catalog) with `react-window`, `content-visibility` on heavy panes, Zustand partialization to reduce re-renders.
 - **Testing**: unit tests for time utils + overlap analyzer (Vitest).
 
@@ -44,6 +47,7 @@
 - **Tests**: Vitest
 
 **Block shape**
+
 ```ts
 {
   id: string;
@@ -164,6 +168,7 @@ Tests live in `src/utils/__tests__/`:
 - `overlaps.test.js` — `analyzeOverlaps` (no overlap, overlapping windows, unscheduled ignored)
 
 Run:
+
 ```bash
 npm test
 ```
@@ -182,16 +187,18 @@ Target: ≥ 95 across Performance, A11y, Best Practices, SEO.
 
 4) Analyze and export the report (keep the JSON/HTML for submission).
 
-5) If any score dips: 
-  - Perf: keep the page idle (no animations), confirm images/fonts are small, watch Total     Blocking Time (<150ms).
-  - A11y: ensure all interactive controls have names; check contrast in both themes.
-  - SEO: unique <title>, <meta name="description">, and semantic headings.
+5) If any score dips:
+
+- Perf: keep the page idle (no animations), confirm images/fonts are small, watch Total     Blocking Time (<150ms).
+- A11y: ensure all interactive controls have names; check contrast in both themes.
+- SEO: unique <title>, <meta name="description">, and semantic headings.
 
 ---
 
 ## ⚙️ How It Works
 
 **Flow**
+
 1. Catalog data is loaded from `src/data/activities.js`.
 2. Interactions (search, filters, theme) update **uiStore** (Zustand).
 3. Adding to a day creates a **block** in **planStore** → persisted via `localStorage`.
@@ -201,12 +208,12 @@ Target: ≥ 95 across Performance, A11y, Best Practices, SEO.
 5. Export uses `html2canvas` on `#plan-panel` and triggers Share/Download.
 
 **Why these choices**
+
 - **Zustand** → tiny API, simple selectors, no boilerplate.
 - **hello-pangea/dnd** → most stable DnD for lists, great accessibility story.
 - **react-window (conditional)** → only kicks in when needed; keeps code small.
 - **Tailwind + tokens** → fast iteration; instant theme swap via CSS variables.
 
-
 ---
 
-#### Made with ❤️ by Vansh Nyati.
+#### Made with ❤️ by Vansh Nyati

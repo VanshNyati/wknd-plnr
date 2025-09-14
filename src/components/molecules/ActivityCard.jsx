@@ -45,7 +45,12 @@ export const ActivityCard = ({ activity, onAdd, addedSat, addedSun }) => {
         {addedSun ? (
           <Disabled>Added to Sun</Disabled>
         ) : (
-          <Button size="sm" className="w-full" variant="dark" onClick={() => onAdd("sun")}>
+          <Button
+            size="sm"
+            className="w-full"
+            variant="dark"
+            onClick={() => onAdd("sun")}
+          >
             Add to Sun
           </Button>
         )}
